@@ -5,34 +5,23 @@ const {v4:uuidv4}= require("uuid"); //aqui estou dizendopara usar a biblioteca u
 const conectaBancoDeDados= require("./bancoDeDados"); //aqui estou ligando ao arquivo bancoDeDados
 conectaBancoDeDados(); //aqui estou chamando a função que conecta o banco de dados  
 
+const Mulher=require("./mulherModel");
+
 const app=express(); // aqui estou iniciando o app
 app.use(express.json()); //aqui estou possibilitando que todo o corpo seja do tipo json
 const porta=3333; // aqui estou criando a porta
-// aqui estou criando a lista inicial de mulheres
-const mulheres= [
-    {
-        id:"1",
-        nome:"Ariany Vidotto",
-        imagem:"https://x.gd/8nMNL",
-        minibio:"Sempre em evolução"
-    },
-    {
-        id:"2",
-        nome:"Iana Chan",
-        imagem:"https://x.gd/0Zg9G",
-        minibio:"Fundadora do PrograMaria"
-    },
-    {
-        id:"3",
-        nome:"Nina Da Hora",
-        imagem:"https://x.gd/bkNvu",
-        minibio:"Hacker antirracista"
-    }
-]
+
 
 // GET
 function mostraMulheres(request, response){ //toda função atrelada a uma rota deve ter a requisição e a resposta
-    response.json(mulheres);
+    try{
+        const mulheresVindasDoBancoDeDados= await 
+        
+        Mulher.find()
+        response.json(mulheresVindasDoBancoDeDados);
+    }catch (erro){
+        console.log(erro);
+    }
 }
 
 // POST
